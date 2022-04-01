@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
 import Image from 'next/image'
 
 export default function Home() {
@@ -12,7 +10,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar />
       <div className='text-center'>
         <Image
           src={require("../public/home.jpg")}
@@ -21,7 +18,7 @@ export default function Home() {
           height={650}
         />
       </div>
-      
+
       <section className="text-gray-400 body-font bg-gray-900">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
@@ -101,8 +98,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   )
 }
