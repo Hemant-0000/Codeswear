@@ -5,7 +5,8 @@ import { AiOutlineShoppingCart, AiOutlineClose, AiOutlinePlusCircle, AiOutlineMi
 import { BsFillBagCheckFill } from 'react-icons/bs'
 import { useRef } from 'react';
 
-const Navbar = () => {
+const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
+  console.log(cart, addToCart, removeFromCart, clearCart, subTotal)
 
   const toggleCart = () => {
     if (ref.current.classList.contains('translate-x-full')) {
@@ -48,46 +49,18 @@ const Navbar = () => {
           <h2 className='font-bold text-xl text-center'>Shopping Cart</h2>
           <span onClick={toggleCart} className="absolute top-4 right-2 cursor-pointer text-2xl text-gray-300"><AiOutlineClose /></span>
           <ol className='list-decimal font-semibold'>
-            <li>
+            {(Object.keys(cart).length === 0 && <div className='my-4 font-semibold'>Your cart is empty!</div>)}
+            {Object.keys(cart).map((k) => { return <li key={k}> 
               <div className="item flex my-3">
-                <div className='w-2/3 font-semibold'>Tshirt - Wear the code</div>
-                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer' /> 1 <AiOutlinePlusCircle className='mx-3 cursor-pointer' /></div>
+                <div className='w-2/3 font-semibold'>{cart[k].name}</div>
+                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer' onClick={()=>{removeFromCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant)}} /> {cart[k].qty} <AiOutlinePlusCircle onClick={()=>{addToCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant)}} className='mx-3 cursor-pointer' /></div>
               </div>
             </li>
-            <li>
-              <div className="item flex my-3">
-                <div className='w-2/3 font-semibold'>Tshirt - Wear the code</div>
-                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer' /> 1 <AiOutlinePlusCircle className='mx-3 cursor-pointer' /></div>
-              </div>
-            </li>
-            <li>
-              <div className="item flex my-3">
-                <div className='w-2/3 font-semibold'>Tshirt - Wear the code</div>
-                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer' /> 1 <AiOutlinePlusCircle className='mx-3 cursor-pointer' /></div>
-              </div>
-            </li>
-            <li>
-              <div className="item flex my-3">
-                <div className='w-2/3 font-semibold'>Tshirt - Wear the code</div>
-                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer' /> 1 <AiOutlinePlusCircle className='mx-3 cursor-pointer' /></div>
-              </div>
-            </li>
-            <li>
-              <div className="item flex my-3">
-                <div className='w-2/3 font-semibold'>Tshirt - Wear the code</div>
-                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer' /> 1 <AiOutlinePlusCircle className='mx-3 cursor-pointer' /></div>
-              </div>
-            </li>
-            <li>
-              <div className="item flex my-3">
-                <div className='w-2/3 font-semibold'>Tshirt - Wear the code</div>
-                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer' /> 1 <AiOutlinePlusCircle className='mx-3 cursor-pointer' /></div>
-              </div>
-            </li>
+            })}
           </ol>
           <div className="flex">
             <button className="flex mr-2 text-white bg-gray-500 border-0 py-2 px-2 focus:outline-none hover:bg-gray-400 rounded text-sm"><BsFillBagCheckFill className='my-auto mr-3' /> Checkout</button>
-            <button className="flex mr-2 text-white bg-gray-500 border-0 py-2 px-2 focus:outline-none hover:bg-gray-400 rounded text-sm">Clear Cart</button>
+            <button onClick={clearCart} className="flex mr-2 text-white bg-gray-500 border-0 py-2 px-2 focus:outline-none hover:bg-gray-400 rounded text-sm">Clear Cart</button>
           </div>
         </div>
 
