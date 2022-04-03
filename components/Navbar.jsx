@@ -51,41 +51,44 @@ const Navbar = () => {
             <li>
               <div className="item flex my-3">
                 <div className='w-2/3 font-semibold'>Tshirt - Wear the code</div>
-                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer'/> 1 <AiOutlinePlusCircle className='mx-3 cursor-pointer'/></div>
+                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer' /> 1 <AiOutlinePlusCircle className='mx-3 cursor-pointer' /></div>
               </div>
             </li>
             <li>
               <div className="item flex my-3">
                 <div className='w-2/3 font-semibold'>Tshirt - Wear the code</div>
-                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer'/> 1 <AiOutlinePlusCircle className='mx-3 cursor-pointer'/></div>
+                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer' /> 1 <AiOutlinePlusCircle className='mx-3 cursor-pointer' /></div>
               </div>
             </li>
             <li>
               <div className="item flex my-3">
                 <div className='w-2/3 font-semibold'>Tshirt - Wear the code</div>
-                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer'/> 1 <AiOutlinePlusCircle className='mx-3 cursor-pointer'/></div>
+                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer' /> 1 <AiOutlinePlusCircle className='mx-3 cursor-pointer' /></div>
               </div>
             </li>
             <li>
               <div className="item flex my-3">
                 <div className='w-2/3 font-semibold'>Tshirt - Wear the code</div>
-                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer'/> 1 <AiOutlinePlusCircle className='mx-3 cursor-pointer'/></div>
+                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer' /> 1 <AiOutlinePlusCircle className='mx-3 cursor-pointer' /></div>
               </div>
             </li>
             <li>
               <div className="item flex my-3">
                 <div className='w-2/3 font-semibold'>Tshirt - Wear the code</div>
-                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer'/> 1 <AiOutlinePlusCircle className='mx-3 cursor-pointer'/></div>
+                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer' /> 1 <AiOutlinePlusCircle className='mx-3 cursor-pointer' /></div>
               </div>
             </li>
             <li>
               <div className="item flex my-3">
                 <div className='w-2/3 font-semibold'>Tshirt - Wear the code</div>
-                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer'/> 1 <AiOutlinePlusCircle className='mx-3 cursor-pointer'/></div>
+                <div className='w-1/3 font-semibold flex items-center justify-center'><AiOutlineMinusCircle className='mx-3 cursor-pointer' /> 1 <AiOutlinePlusCircle className='mx-3 cursor-pointer' /></div>
               </div>
             </li>
           </ol>
-          <button className="flex mx-auto mt-16 text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-400 rounded text-sm"><BsFillBagCheckFill className='my-auto mr-3'/> Checkout</button>
+          <div className="flex">
+            <button className="flex mr-2 text-white bg-gray-500 border-0 py-2 px-2 focus:outline-none hover:bg-gray-400 rounded text-sm"><BsFillBagCheckFill className='my-auto mr-3' /> Checkout</button>
+            <button className="flex mr-2 text-white bg-gray-500 border-0 py-2 px-2 focus:outline-none hover:bg-gray-400 rounded text-sm">Clear Cart</button>
+          </div>
         </div>
 
       </header>
