@@ -3,10 +3,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { AiOutlineShoppingCart, AiOutlineClose, AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai';
 import { BsFillBagCheckFill } from 'react-icons/bs'
+import { MdAccountCircle } from 'react-icons/md'
 import { useRef } from 'react';
 
 const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
-  
+
   const toggleCart = () => {
     if (ref.current.classList.contains('translate-x-full')) {
       ref.current.classList.remove('translate-x-full')
@@ -42,9 +43,12 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
             <Link href={"/mugs"}><a className="mr-5 hover:text-white">Mugs</a></Link>
           </nav>
           <button onClick={toggleCart} className="cart inline-flex items-center py-1 px-3 focus:outline-none text-xl mt-4 md:mt-0">Cart <AiOutlineShoppingCart className='ml-2 text-2xl' /></button>
+          <Link href={'/login'}>
+            <a><MdAccountCircle className='ml-2 text-3xl mx-2' /></a>
+          </Link>
         </div>
 
-        <div ref={ref} className={`w-72 h-[100vh] sideCart absolute text-white bg-gray-600 rounded-md top-0 right-0 px-8 py-10 transform transition-transform ${Object.keys(cart).length!==0 ? 'translate-x-0': 'translate-x-full'}`}>
+        <div ref={ref} className={`w-72 h-[100vh] sideCart absolute text-white bg-gray-600 rounded-md top-0 right-0 px-8 py-10 transform transition-transform ${Object.keys(cart).length !== 0 ? 'translate-x-0' : 'translate-x-full'}`}>
           <h2 className='font-bold text-xl text-center'>Shopping Cart</h2>
           <span onClick={toggleCart} className="absolute top-4 right-2 cursor-pointer text-2xl text-gray-300"><AiOutlineClose /></span>
           <ol className='list-decimal font-semibold'>
