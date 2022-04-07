@@ -21,7 +21,7 @@ const Tshirts = ({ products }) => {
                   <h2 className="text-gray-900 title-font text-lg font-medium">{products[item].title}</h2>
                   <p className="mt-1">₹{products[item].price}</p>
                   <div className="mt-1">
-                    {products[item].size.includes('S') && <span className='border border-indigo-900 px-1 mx-1'>S </span>}
+                    {products[item].size.includes('S') && <span className='border border-indigo-200 px-1 mx-1'>S </span>}
                     {products[item].size.includes('M') && <span className='border border-indigo-200 px-1 mx-1'>M </span>}
                     {products[item].size.includes('L') && <span className='border border-indigo-200 px-1 mx-1'>L </span>}
                     {products[item].size.includes('X') && <span className='border border-indigo-200 px-1 mx-1'>X </span>}
@@ -34,6 +34,7 @@ const Tshirts = ({ products }) => {
                     {products[item].color.includes('Yellow') && <button className="border-2 border-gray-300 ml-1 bg-yellow-300 rounded-full w-6 h-6 focus:outline-none"></button>}
                     {products[item].color.includes('Blue') && <button className="border-2 border-gray-300 ml-1 bg-blue-700 rounded-full w-6 h-6 focus:outline-none"></button>}
                     {products[item].color.includes('Purple') && <button className="border-2 border-gray-300 ml-1 bg-purple-700 rounded-full w-6 h-6 focus:outline-none"></button>}
+                    {products[item].color.includes('Black') && <button className="border-2 border-gray-300 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none"></button>}
                   </div>
                 </div>
               </div>

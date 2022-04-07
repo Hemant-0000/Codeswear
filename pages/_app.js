@@ -45,9 +45,9 @@ function MyApp({ Component, pageProps }) {
   const removeFromCart = (itemCode, qty, price, name, size, variant) => {
     let newCart = JSON.parse(JSON.stringify(cart));
     if (itemCode in cart) {
-      newCart[itemCode].qty = newCart[itemCode] - qty
+      newCart[itemCode].qty = cart[itemCode].qty - qty
     }
-    if (newCart[itemCode].qty <= 0) {
+    if (newCart[itemCode]["qty"] <= 0) {
       delete newCart[itemCode]
     }
     setCart(newCart)
