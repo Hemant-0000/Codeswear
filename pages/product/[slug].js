@@ -2,6 +2,8 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import mongoose from 'mongoose'
 import Product from '../../models/Product'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Post = ({ addToCart, product, variants, buyNow }) => {
   const router = useRouter()
@@ -15,14 +17,31 @@ const Post = ({ addToCart, product, variants, buyNow }) => {
     let pinJson = await pins.json()
     if (pinJson.includes(parseInt(pin))) {
       setService(true)
+      toast.success('Your pincode is serviable', {
+        position: "bottom-center",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
     else {
       setService(false)
+      toast.error('Sorry, Your pincode is not serviable!', {
+        position: "bottom-center",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   }
 
   const onChangePin = (e) => {
-    clearca
     setPin(e.target.value)
   }
   const refreshVariant = (newSize, newColor) => {
@@ -35,6 +54,17 @@ const Post = ({ addToCart, product, variants, buyNow }) => {
 
   return <>
     <section className="text-gray-600 body-font overflow-hidden">
+      <ToastContainer
+        position="bottom-center"
+        autoClose={1000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div className="container px-5 py-14 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto px-24 object-cover object-top rounded" src={product.img} />
