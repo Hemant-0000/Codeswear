@@ -1,11 +1,81 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaLock } from 'react-icons/fa'
 import Link from 'next/link'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/router';
+
 
 const Login = () => {
+
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+  const router = useRouter()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const data = { email, password }
+    let res = await fetch('http://localhost:3000/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    let response = await res.json()
+    console.log(response);
+    setEmail('')
+    setPassword('')
+    if (response.success) {
+      toast.success('You are succesfully logged in', {
+        position: "bottom-center",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setTimeout(() => {
+        router.push('http://localhost:3000/')
+      }, 1000);
+    } else {
+      toast.error(response.error, {
+        position: "bottom-center",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }
+
+  const handleChange = (e) => {
+    if (e.target.name === 'email') {
+      setEmail(e.target.value)
+    }
+    else if (e.target.name === 'password') {
+      setPassword(e.target.value)
+    }
+  }
+
+
   return (
     <>
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <ToastContainer
+          position="bottom-center"
+          autoClose={1000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         <div className="max-w-md w-full space-y-8">
           <div>
             <img
@@ -22,15 +92,17 @@ const Login = () => {
               </Link>
             </p>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form onSubmit={handleSubmit} className="mt-8 space-y-6" method="POST">
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
-                <label htmlFor="email-address" className="sr-only">
+                <label htmlFor="email" className="sr-only">
                   Email address
                 </label>
                 <input
-                  id="email-address"
+                  onChange={handleChange}
+                  value={email}
+                  id="email"
                   name="email"
                   type="email"
                   autoComplete="email"
@@ -44,6 +116,8 @@ const Login = () => {
                   Password
                 </label>
                 <input
+                  onChange={handleChange}
+                  value={password}
                   id="password"
                   name="password"
                   type="password"
@@ -58,6 +132,8 @@ const Login = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <input
+                  onChange={handleChange}
+                  value={name}
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
