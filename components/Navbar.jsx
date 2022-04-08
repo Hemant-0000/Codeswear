@@ -48,7 +48,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
           </Link>
         </div>
 
-        <div ref={ref} className={`w-72 h-[100vh] sideCart absolute text-white bg-gray-600 rounded-md top-0 right-0 px-8 py-10 transform transition-transform ${Object.keys(cart).length !== 0 ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div ref={ref} className={`w-72 h-[100vh] sideCart overflow-y-scroll absolute text-white bg-gray-600 rounded-md top-0 right-0 px-8 py-10 transform transition-transform ${Object.keys(cart).length !== 0 ? 'translate-x-0' : 'translate-x-full'}`}>
           <h2 className='font-bold text-xl text-center'>Shopping Cart</h2>
           <span onClick={toggleCart} className="absolute top-4 right-2 cursor-pointer text-2xl text-gray-300"><AiOutlineClose /></span>
           <ol className='list-decimal font-semibold'>
