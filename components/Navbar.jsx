@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AiOutlineShoppingCart, AiOutlineClose, AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai';
@@ -6,7 +6,8 @@ import { BsFillBagCheckFill } from 'react-icons/bs'
 import { MdAccountCircle } from 'react-icons/md'
 import { useRef } from 'react';
 
-const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
+const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subTotal }) => {
+  const [dropdown, setDropdown] = useState(false)
 
   const toggleCart = () => {
     if (ref.current.classList.contains('translate-x-full')) {
@@ -42,10 +43,18 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
             <Link href={"/stickers"}><a className="mr-5 hover:text-white">Stickers</a></Link>
             <Link href={"/mugs"}><a className="mr-5 hover:text-white">Mugs</a></Link>
           </nav>
-          <button onClick={toggleCart} className="cart inline-flex items-center py-1 px-3 focus:outline-none text-xl mt-4 md:mt-0">Cart <AiOutlineShoppingCart className='ml-2 text-2xl' /></button>
-          <Link href={'/login'}>
-            <a><MdAccountCircle className='ml-2 text-3xl mx-2' /></a>
-          </Link>
+          <button onClick={toggleCart} className="cart inline-flex items-center py-1 px-3 focus:outline-none text-xl my-auto md:mt-0">Cart <AiOutlineShoppingCart className='ml-2 text-2xl' /></button>
+          <div onMouseOver={() => { setDropdown(true) }} onMouseOut={() => { setDropdown(false) }}>
+            {dropdown && <div className="dropdown absolute top-14 right-2 bg-gray-600 rounded-md px-5 w-36 py-3">
+              <ul>
+                <Link passHref href={'/myaccount'}><li className='py-1 hover:underline hover:text-indigo-100 cursor-pointer text-indigo-300 font-bold font-mono'>My Account</li></Link>
+                <Link passHref href={'/orders'}><li className='py-1 hover:underline hover:text-indigo-100 cursor-pointer text-indigo-300 font-bold font-mono'>Orders</li></Link>
+                <li onClick={logout} className='py-1 hover:underline hover:text-indigo-100 cursor-pointer text-indigo-300 font-bold font-mono'>Logout</li>
+              </ul>
+            </div>}
+            {user.value && <MdAccountCircle className='ml-2 text-3xl mx-2 cursor-pointer' />}
+          </div>
+          {!user.value && <Link href={'/login'}><a><button className='bg-indigo-300 rounded-xl px-3 py-2 text-black hover:bg-indigo-200 my-auto'>Login</button></a></Link>}
         </div>
 
         <div ref={ref} className={`w-72 h-[100vh] sideCart overflow-y-scroll absolute text-white bg-gray-600 rounded-md top-0 right-0 px-8 py-10 transform transition-transform ${Object.keys(cart).length !== 0 ? 'translate-x-0' : 'translate-x-full'}`}>
