@@ -132,8 +132,6 @@ const Login = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <input
-                  onChange={handleChange}
-                  value={name}
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
