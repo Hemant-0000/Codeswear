@@ -8,9 +8,9 @@ import { useRouter } from 'next/router';
 
 const Signup = () => {
 
-  const [name, setName] = useState()
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const router = useRouter()
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const data = { name, email, password }
-    let res = await fetch('http://localhost:3000/api/signup', {
+    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
