@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaLock } from 'react-icons/fa'
 import Link from 'next/link'
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,6 +11,13 @@ const Login = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const router = useRouter()
+
+  useEffect(() => {
+      if(localStorage.getItem('token')){
+        router.push('/')
+      }
+  }, [])
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -94,7 +101,6 @@ const Login = () => {
             </p>
           </div>
           <form onSubmit={handleSubmit} className="mt-8 space-y-6" method="POST">
-            <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="email" className="sr-only">
@@ -131,18 +137,6 @@ const Login = () => {
             </div>
 
             <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                  Remember me
-                </label>
-              </div>
-
               <div className="text-sm">
                 <Link href={'/forgot'}><a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
                   Forgot your password?

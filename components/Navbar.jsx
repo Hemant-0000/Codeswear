@@ -38,21 +38,21 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
             </a>
           </Link>
           <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center cursor-pointer">
-            <Link href={"/tshirts"}><a className="mr-5 hover:text-white">Tshirts</a></Link>
-            <Link href={"/hoodies"}><a className="mr-5 hover:text-white">Hoodies</a></Link>
-            <Link href={"/stickers"}><a className="mr-5 hover:text-white">Stickers</a></Link>
-            <Link href={"/mugs"}><a className="mr-5 hover:text-white">Mugs</a></Link>
+            <Link href={"/tshirts"}><a className="mr-5 hover:text-indigo-50">Tshirts</a></Link>
+            <Link href={"/hoodies"}><a className="mr-5 hover:text-indigo-50">Hoodies</a></Link>
+            <Link href={"/stickers"}><a className="mr-5 hover:text-indigo-50">Stickers</a></Link>
+            <Link href={"/mugs"}><a className="mr-5 hover:text-indigo-50">Mugs</a></Link>
           </nav>
-          <button onClick={toggleCart} className="cart inline-flex items-center py-1 px-3 focus:outline-none text-xl my-auto md:mt-0">Cart <AiOutlineShoppingCart className='ml-2 text-2xl' /></button>
+          <button onClick={toggleCart} className="cart hover:text-indigo-50 inline-flex items-center py-1 px-3 focus:outline-none text-xl my-auto md:mt-0">Cart <AiOutlineShoppingCart className='ml-2 text-2xl' /></button>
           <div onMouseOver={() => { setDropdown(true) }} onMouseOut={() => { setDropdown(false) }}>
-            {dropdown && <div className="dropdown absolute top-14 right-2 bg-gray-600 rounded-md px-5 w-36 py-3">
+            {dropdown && <div className="dropdown shadow-xl absolute top-14 right-2 bg-gray-600 rounded-md px-5 w-36 py-3">
               <ul>
                 <Link passHref href={'/myaccount'}><li className='py-1 hover:underline hover:text-indigo-100 cursor-pointer text-indigo-300 font-bold font-mono'>My Account</li></Link>
                 <Link passHref href={'/orders'}><li className='py-1 hover:underline hover:text-indigo-100 cursor-pointer text-indigo-300 font-bold font-mono'>Orders</li></Link>
                 <li onClick={logout} className='py-1 hover:underline hover:text-indigo-100 cursor-pointer text-indigo-300 font-bold font-mono'>Logout</li>
               </ul>
             </div>}
-            {user.value && <MdAccountCircle className='ml-2 text-3xl mx-2 cursor-pointer' />}
+            {user.value && <MdAccountCircle className='ml-2 hover:text-indigo-50 text-3xl mx-2 cursor-pointer' />}
           </div>
           {!user.value && <Link href={'/login'}><a><button className='bg-indigo-300 rounded-xl px-3 py-2 text-black hover:bg-indigo-200 my-auto'>Login</button></a></Link>}
         </div>
